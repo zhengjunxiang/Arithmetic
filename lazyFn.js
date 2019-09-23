@@ -12,8 +12,21 @@ function lazy() {
 }
 
 function lazy() {
+  if (lazy.fn) return lazy.fn;
+  return lazy.fn = new Date();
+}
+
+function lazy() {
   var instance = new Date();
   lazy = function() {
+    return instance;
+  }
+  return instance;
+}
+
+function lazy() {
+  let instance = new Date();
+  lazy = function () {
     return instance;
   }
   return instance;

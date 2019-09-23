@@ -27,14 +27,14 @@ EventEmitter.prototype.off = function(event, cd) {
     this._events = Object.create(null);
     return this;
   }
-  if (arguments.length === 1) {
-    this._events[event] = null;
-    return this;
-  }
   if (Array.isArray(event)) {
     for(let i = 0; i < event.length; i++) {
       this.off(event[i], cd)
     }
+    return this;
+  }
+  if (arguments.length === 1) {
+    this._events[event] = null;
     return this;
   }
   for(var i = 0; i < this._events[event].length; i++) {

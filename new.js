@@ -27,3 +27,14 @@ function myNew(fn) {
     return obj;
   }
 }
+
+function myNew(fn) {
+  return function () {
+    const obj = {
+      __proto__: fn.prototype
+    }
+
+    fn.apply(obj, arguments);
+    return obj;
+  }
+}

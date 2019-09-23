@@ -19,14 +19,24 @@
 //   return quickSort(left).concat(cur, quickSort(right));
 // }
 
+// function quickSort(arr) {
+//   if (arr.length < 2) return arr;
+//   const left = [], right = [], target = arr.shift();
+//   for (var i = 0; i < arr.length; i++) {
+//     if (arr[i] > target) right.push(arr[i]);
+//     else left.push(arr[i]);
+//   }
+//   return quickSort(left).concat(target, quickSort(right));
+// }
+
 function quickSort(arr) {
-  if (arr.length < 2) return arr;
-  const left = [], right = [], target = arr.shift();
+  if (arr.length <= 1) return arr;
+  const current = arr.shift(), left = [], right = [];
   for (var i = 0; i < arr.length; i++) {
-    if (arr[i] > target) right.push(arr[i]);
+    if (arr[i] > current) right.push(arr[i]);
     else left.push(arr[i]);
   }
-  return quickSort(left).concat(target, quickSort(right));
+  return quickSort(left).concat(current, quickSort(right));
 }
 
 var arr = quickSort([3,44,38,5,47,15,36,26,27,2,46,4,19,50,48]);

@@ -23,20 +23,23 @@ function throttle(fn, delay) {
 }
 
 function throttle(fn, delay) {
-  let prev = Date.now();
-  let timer = null;
+  let prev = Date.now(), timer = null;
   return function() {
-    clearTimeout(timer);
-    const context = this;
-    const args = arguments;
-    let now = Date.now();
-    timer = setTimeout(() => {
-      fn.apply(context, args);
-    }, delay - (now - prev));
+    if (timer) clearTimeout(timer);
+    const context = this, args = arguments, now = Date.now();
     if (now - prev >= delay) {
-      clearTimeout(timer);
-      timer = null;
       fn.apply(this, arguments);
+      prev = Date.now();
+    } else timer = setTimeout(() => fn.apply(context, args), delay - now + prev);
+  }
+}
+
+function throttle(fn, delay) {
+  var prev = Date.now();
+  return function() {
+    var now = Date.now();
+    if (now - prev >=delay) {
+      fn.apply(this, [...arguments]);
       prev = Date.now();
     }
   }

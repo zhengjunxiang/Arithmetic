@@ -6,3 +6,12 @@ function memoize(fn) {
     else return cache[key] = fn.apply(this, arguments);
   }
 }
+
+function memoize(fn) {
+  var cache = {};
+  return function () {
+    var key = [...arguments].join(',');
+    if (cache[key]) return cache[key];
+    else cache[key] = fn.apply(this, [...arguments]);
+  }
+}

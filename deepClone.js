@@ -1,5 +1,5 @@
 // function deepClone(obj) {
-//   if (obj !== 'object') return obj;
+//   if (typeof obj !== 'object') return obj;
 //   let copy = obj instanceof Array ? [] : {};
 //   for (let i in obj) {
 //     if (typeof obj[i] === 'object') copy[i] = deepClone(obj[i]);
@@ -8,10 +8,46 @@
 //   return copy;
 // }
 
+// function deepClone(target, map = new Map()) {
+//   if (typeof target !== 'object') return target;
+//   const clone = Array.isArray(target) ? [] : {};
+//   if (map.get(target)) return map.get(target);
+//   map.set(target, clone);
+//   for (key in target) {
+//     if (typeof target[key] === 'object') clone[key] = deepClone(target[key], map);
+//     else clone[key] = target[key];
+//   }
+//   return clone;
+// }
+
+// function deepClone(target, map = new Map()) {
+//   if (typeof target !== 'object') return target;
+//   const clone = Array.isArray(target) ? [] : {};
+//   if (map.get(target)) return map.get(target);
+//   map.set(target, clone);
+//   for (key in target) {
+//     if (typeof target[key] === 'object') clone[key] = deepClone(target[key], map);
+//     else clone[key] = target[key];
+//   }
+//   return clone;
+// }
+
+// function deepClone(target, map = new Map()) {
+//   if (typeof target !== 'object') return target;
+//   const clone = Array.isArray(target) ? [] : {};
+//   if (map.get(target)) return map.get(target);
+//   map.set(target, clone);
+//   for (key in target) {
+//     if (typeof target[key] === 'object') clone[key] = deepClone(target[key], map);
+//     else clone[key] = target[key];
+//   }
+//   return clone;
+// }
+
 function deepClone(target, map = new Map()) {
   if (typeof target !== 'object') return target;
   const clone = Array.isArray(target) ? [] : {};
-  if (map.get(target)) return map.get(target);
+  if(map.get(target)) return map.get(target);
   map.set(target, clone);
   for (key in target) {
     if (typeof target[key] === 'object') clone[key] = deepClone(target[key], map);

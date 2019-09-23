@@ -37,10 +37,22 @@
 //   }, [])
 // }
 
+// function flat(arr) {
+//   while(arr.some(item => Array.isArray(item)))
+//     arr = [].concat(...arr);
+//   return arr;
+// }
+
+// function flat(arr) {
+//   while(arr.some(item => Array.isArray(item)))
+//     arr = [].concat(...arr);
+//   return arr;
+// }
+
 function flat(arr) {
-  while(arr.some(item => Array.isArray(item)))
-    arr = [].concat(...arr);
-  return arr;
+  return arr.reduce(function(prev, next) {
+    return prev.concat(Array.isArray(next) ? flat(next) : next);
+  }, []);
 }
 
 var arr = flat([1,2,[342,52, [34,545], [4,[6,[32]]]], 12, [21,4]])

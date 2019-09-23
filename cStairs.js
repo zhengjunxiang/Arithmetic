@@ -3,6 +3,6 @@ function cStairs(n) {
   else return cStairs(n-1) + cStairs(n-2);
 }
 
-var n = cStairs(48);
+var n = cStairs(5);
 
 console.log('n', n)
