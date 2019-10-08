@@ -1,0 +1,30 @@
+{
+  "name": "Arithmetic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "apply.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/babel es6 --out-dir lib",
+    "dev": "npm run build && node lib/decorator.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhengjunxiang/Arithmetic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhengjunxiang/Arithmetic/issues"
+  },
+  "homepage": "https://github.com/zhengjunxiang/Arithmetic#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.6.0",
+    "@babel/preset-env": "^7.6.2"
+  },
+  "dependencies": {}
+}
