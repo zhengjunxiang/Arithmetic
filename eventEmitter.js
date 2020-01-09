@@ -54,3 +54,107 @@ EventEmitter.prototype.once = function(event, cd) {
   this.on(event, on);
   return this;
 }
+
+function EventEmitter() {
+  this._events = {};
+}
+EventEmitter.prototype.on = function(event, cd) {
+  if(Array.isArray(event)) {
+    for(var i = 0; i < event.length; i++) {
+      this.on(event(i), cd);
+    }
+  } else (this._events[event] || (this._events[event] = [])).push(cd);
+  return this;
+}
+EventEmitter.prototype.emit = function(event) {
+  const evs = this._events[event],
+    args = [...arguments].slice(1);
+  if (!evs) return this;
+  for(var i = 0; i < evs.length; i++) {
+    evs[i].apply(this, args);
+  }
+  return this;
+}
+EventEmitter.prototype.off = function(event, cd) {
+  if (arguments.length === 0) {
+    this._events = Object.create(null);
+    return this;
+  }
+  if (Array.isArray(event)) {
+    for(var i = 0; i < event.length; i++) {
+      this.off(event[i], cd);
+    }
+  }
+  if (arguments.length === 1) {
+    this._events[event] = null;
+    return this;
+  }
+  for (var i = 0; i < this._events[event].length; i++) {
+    if (this._events[event] === cd || this._events[event].fn === cd) {
+      this._events[event].splice(i, 1);
+    }
+  }
+  return this;
+}
+EventEmitter.prototype.once = function(event, cd) {
+  function on() {
+    this.off(event, cd);
+    cd.apply(this, arguments);
+  }
+  on.fn = cd;
+  this.on(event, on);
+  return this;
+}
+
+function EventEmitter() {
+  this._events = {};
+}
+EventEmitter.prototype.on = function(event, cd) {
+  if (Array.isArray(event)) {
+    for (var i = 0; i < event.length; i++) {
+      this.on(event[i], cd);
+    }
+  } else (this._events[event] || (this._events[event] = [])).push(cd);
+  return this;
+}
+EventEmitter.prototype.emit = function(event) {
+  const evs = this._events[event],
+    args = [...arguments].slice(1);
+  if (!evs) return this;
+  for (var i = 0; i < evs.length; i++) {
+    evs[i].apply(this, args);
+  }
+  return this;
+}
+EventEmitter.prototype.off = function(event, cd) {
+  if (arguments.length === 0) {
+    this._events = Object.create(null);
+    return this;
+  }
+  const evs = this._events[event];
+  if (!evs) return this;
+  if (Array.isArray(event)) {
+    for(var i = 0; i < event.length; i++) {
+      this.off(event[i], cd);
+    }
+  }
+  if (event.length === 1) {
+    evs = null;
+    return this;
+  }
+  for (var i = 0; i < evs.length; i++) {
+    if (evs[i] === cd || evs[i] === cd.fn) {
+      evs.splice(i, 1);
+    }
+  }
+  return this;
+}
+EventEmitter.prototype.once = function(event, cd) {
+  function on() {
+    this.off(event, cd);
+    cd.apply(this, arguments);
+  }
+  on.fn = cd;
+  this.on(event, on);
+  return this;
+}

@@ -56,6 +56,18 @@ function deepClone(target, map = new Map()) {
   return clone;
 }
 
+function deepClone(target, map = new Map()) {
+  if (typeof target !== "object") return target;
+  const clone = Array.isArray(target) ? [] : {};
+  if (map.get(target)) return map.get(target);
+  map.set(target, clone);
+  for (var key in target) {
+    if (typeof target[key] === "object") clone[key] = deepClone(target[key], map);
+    clone[key] = target[key];
+  }
+  return clone;
+}
+
 var target = {
   k1: 1221,
   k2: 'james',

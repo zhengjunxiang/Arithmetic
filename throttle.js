@@ -44,3 +44,14 @@ function throttle(fn, delay) {
     }
   }
 }
+
+function throttle(fn, delay) {
+  var prev = Date.now();
+  return function() {
+    var now = Date.now();
+    if (now - prev >= delay) {
+      fn.apply(this, arguments);
+      prev = Data.now();
+    }
+  }
+}
