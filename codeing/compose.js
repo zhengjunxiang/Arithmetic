@@ -18,7 +18,7 @@
 //   }
 // }
 
-function compose() {
+const compose = () => {
   const args = arguments;
   let start = args.length - 1;
   return function() {

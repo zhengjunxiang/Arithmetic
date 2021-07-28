@@ -60,9 +60,28 @@
 //   return arr;
 // }
 
+// function mergeSort(arr) {
+//   if (arr.length < 2) return arr;
+//   const mid = arr.length >>> 1;
+//   return merge(mergeSort(arr.slice(0, mid)), mergeSort(arr.slice(mid)));
+// }
+
+// function merge(left, right) {
+//   const arr = [];
+//   while(left.length && right.length) {
+//     if (left[0] > right[0]) arr.push(right.shift());
+//     else arr.push(left.shift());
+//   }
+//   while(left.length)
+//     arr.push(left.shift());
+//   while(right.length)
+//     arr.push(right.shift());
+//   return arr;
+// }
+
 function mergeSort(arr) {
   if (arr.length < 2) return arr;
-  const mid = arr.length >>> 1;
+  const mid = arr.length >> 1;
   return merge(mergeSort(arr.slice(0, mid)), mergeSort(arr.slice(mid)));
 }
 
@@ -72,29 +91,7 @@ function merge(left, right) {
     if (left[0] > right[0]) arr.push(right.shift());
     else arr.push(left.shift());
   }
-  while(left.length)
-    arr.push(left.shift());
-  while(right.length)
-    arr.push(right.shift());
-  return arr;
-}
-
-function mergeSort(arr) {
-  if (arr.length < 2) return arr;
-  const mid = arr.length >>> 1;
-  return merge(mergeSort(arr.slice(0, mid)), mergeSort(arr.slice(mid)));
-}
-
-function merge(left, right) {
-  const arr = [];
-  while(left.length && right.length) {
-    if (left[0] > right[0]) arr.push(right.shift());
-    else arr.push(left.shift());
-  }
-  while(left.length)
-    arr.push(left.shift());
-  while(right.length)
-    arr.push(right.shift());
+  arr.push(...left, ...right);
   return arr;
 }
 

@@ -29,20 +29,30 @@
 //   return quickSort(left).concat(target, quickSort(right));
 // }
 
-function quickSort(arr) {
-  if (arr.length <= 1) return arr;
-  const current = arr.shift(), left = [], right = [];
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i] > current) right.push(arr[i]);
-    else left.push(arr[i]);
-  }
-  return quickSort(left).concat(current, quickSort(right));
-}
+// function quickSort(arr) {
+//   if (arr.length <= 1) return arr;
+//   const current = arr.shift(), left = [], right = [];
+//   for (var i = 0; i < arr.length; i++) {
+//     if (arr[i] > current) right.push(arr[i]);
+//     else left.push(arr[i]);
+//   }
+//   return quickSort(left).concat(current, quickSort(right));
+// }
+
+// function quickSort(arr) {
+//   if (arr.length <= 1) return arr;
+//   const current = arr.shift(), left = [], right = [];
+//   for (var i = 0; i < arr.length; i++) {
+//     if (arr[i] < current) left.push(arr[i]);
+//     else right.push(arr[i]);
+//   }
+//   return quickSort(left).concat(current, quickSort(right));
+// }
 
 function quickSort(arr) {
   if (arr.length <= 1) return arr;
   const current = arr.shift(), left = [], right = [];
-  for (var i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     if (arr[i] < current) left.push(arr[i]);
     else right.push(arr[i]);
   }
