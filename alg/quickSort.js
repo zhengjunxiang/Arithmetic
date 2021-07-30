@@ -59,6 +59,16 @@ function quickSort(arr) {
   return quickSort(left).concat(current, quickSort(right));
 }
 
+function quickSort(arr) {
+  if (arr.length <= 1) return arr;
+  const current = arr.shift(), left = [], right = [];
+  arr.forEach(item => {
+    if (item < current) left.push(item)
+    else right.push(item)
+  });
+  return quickSort(left).concat(current, quickSort(right))
+}
+
 var arr = quickSort([3,44,38,5,47,15,36,26,27,2,46,4,19,50,48]);
 
 console.log(arr)
