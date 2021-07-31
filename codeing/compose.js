@@ -18,6 +18,16 @@
 //   }
 // }
 
+// function compose() {
+//   const args = arguments;
+//   let start = args.length - 1;
+//   return function() {
+//     let result = args[start].apply(this, arguments);
+//     while(start--) result = args[start].call(this, result);
+//     return result;
+//   }
+// }
+
 function compose() {
   const args = arguments;
   let start = args.length - 1;
