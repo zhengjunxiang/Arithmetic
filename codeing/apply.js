@@ -94,3 +94,12 @@ Function.prototype.apply = function(context) {
   delete context.fn;
   return result;
 }
+
+Function.prototype.apply = function(context) {
+  if (typeof this !== 'function') throw TypeError('Not Function');
+  context = context || window;
+  context.fn = this;
+  let result = arguments[1] ? context.fn(...arguments[1]) : context.fn();
+  delete context.fn;
+  return result;
+}
