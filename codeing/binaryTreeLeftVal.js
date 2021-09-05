@@ -26,7 +26,7 @@
 // }
 
 function treeLeftVal(root) {
-  var stack = [root], ret = [], t = stack.pop();
+  var stack = [], ret = [], t = root;
   while(t) {
     if (t.right) stack.push(t.right);
     if (t.left) {

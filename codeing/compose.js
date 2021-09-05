@@ -12,15 +12,36 @@
 //   const args = arguments;
 //   let start = args.length - 1;
 //   return function() {
-//     let result = args[start].apply(this, arguments)
+//     let result = args[start].apply(this, arguments);
 //     while(start--) result = args[start].call(this, result);
 //     return result;
 //   }
 // }
 
-const compose = () => {
+// function compose() {
+//   const args = arguments;
+//   let start = args.length - 1;
+//   return function() {
+//     let result = args[start].apply(this, arguments);
+//     while(start--) result = args[start].call(this, result);
+//     return result;
+//   }
+// }
+
+
+function compose() {
   const args = arguments;
   let start = args.length - 1;
+  return function() {
+    let result = args[start].apply(this, arguments);
+    while(start--) result = args[start].call(this, result);
+    return result;
+  }
+}
+
+function compose() {
+  let start = argumenst.length - 1;
+  const args = arguments;
   return function() {
     let result = args[start].apply(this, arguments);
     while(start--) result = args[start].call(this, result);
