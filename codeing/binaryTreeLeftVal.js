@@ -25,8 +25,34 @@
 //   return ret;
 // }
 
+// function treeLeftVal(root) {
+//   var stack = [root], ret = [], t = stack.pop();
+//   while(t) {
+//     if (t.right) stack.push(t.right);
+//     if (t.left) {
+//       stack.push(t.left);
+//       ret.push(t.left.val);
+//     }
+//     t = stack.pop();
+//   }
+//   return ret;
+// }
+
+// function treeLeftVal(root) {
+//   var stack = [root], ret = [], t = stack.pop();
+//   while(t) {
+//     if (t.right) stack.push(t.right);
+//     if (t.left) {
+//       stack.push(t.left);
+//       ret.push(t.left.val);
+//     }
+//     t = stack.pop();
+//   }
+//   return ret;
+// }
+
 function treeLeftVal(root) {
-  var stack = [], ret = [], t = root;
+  let stack = [], ret = [], t = root;
   while(t) {
     if (t.right) stack.push(t.right);
     if (t.left) {

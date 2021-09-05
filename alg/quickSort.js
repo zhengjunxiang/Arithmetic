@@ -60,7 +60,7 @@ function quickSort(arr) {
 }
 
 function quickSort(arr) {
-  if (arr.length <= 1) return arr;
+  if (arr.length < 2) return arr;
   const current = arr.shift(), left = [], right = [];
   arr.forEach(item => {
     if (item < current) left.push(item)

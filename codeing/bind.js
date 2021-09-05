@@ -51,3 +51,53 @@ Function.prototype.bind = function(context) {
     _this.apply(context, args.concat(...arguments));
   }
 }
+
+Function.prototype.bind = function(context) {
+  const _this = this, args = [...arguments].slice(1);
+  return function F() {
+    if (this instanceof F) return new _this(...args, ...arguments);
+    _this.apply(context, args.concat(...arguments));
+  }
+}
+
+Function.prototype.bind = function(context) {
+  const _this = this, args = [...arguments].slice(1);
+  return function F() {
+    if (this instanceof F) return new _this(...args, ...arguments);
+    _this.apply(context, args.concat(...arguments));
+  }
+}
+
+// Function.prototype.bind = function(context) {
+//   const _this = this, args = [...arguments].slice(1);
+//   return function F() {
+//     if (this instanceof F) return new _this(...args, ...arguments);
+//     _this.apply(context, args.concat(...arguments));
+//   }
+// }
+
+Function.prototype.bind = function(context) {
+  const _this = this, args = [...arguments].slice(1);
+  return function F() {
+    if (this instanceof F) return new _this(...args, ...arguments);
+    _this.apply(context, args.concat(...arguments));
+  }
+}
+
+Function.prototype.bind = function(context) {
+  if (typeof this !== 'function') return new TypeError('Error');
+  const _this = this, args = [...arguments].slice(1);
+  return function F() {
+    if (this instanceof F) return new _this(...args, ...arguments);
+    _this.apply(context, args.concat(arguments));
+  }
+}
+
+Function.prototype.bind = function(context) {
+  if (typeof this !== 'function') return new TypeError('Error');
+  const _this = this, args = arguments;
+  return function F() {
+    if (this instanceof F) return new _this(...args, ...arguments);
+    _this.apply(context, args.concat(arguments));
+  }
+}

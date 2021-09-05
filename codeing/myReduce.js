@@ -7,3 +7,13 @@ Array.prototype.myReduce = function(fn, iniV) {
   }
   return res;
 }
+
+Array.prototype.myReduce = function(fn, initV) {
+  var newArr = Array.prototype.slice.call(this);
+  var res = initV ? initV : newArr[0];
+  var startIndex = initV ? 0 : 1;
+  for (var i = startIndex; i < newArr.length; i++) {
+    res = fn.call(null, res, newArr[i], i, newArr)
+  }
+  return res;
+}
