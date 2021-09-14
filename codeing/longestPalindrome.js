@@ -1,3 +1,4 @@
+// 返回最长的回文字段
 var longestPalindrome = function(s) {
     let n = s.length;
     let res = '';

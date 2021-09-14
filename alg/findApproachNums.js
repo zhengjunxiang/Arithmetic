@@ -1,3 +1,4 @@
+// 获取相加最接近的两个值
 function findApproachNumber(arr, x) {
     let minVal = '', len = arr.length, minDiff = null;
     if (len <= 2) return arr;
@@ -22,56 +23,3 @@ var type = function(data) {
             .replace(/\[object\s(.+)\]/, "$1")
             .toLowerCase()
 };
-
-const dataReducer = (prev, cur, idx) => {
-    let obj = {};
-    const { name } = cur;
-    obj[name] = cur;
-    return {
-        ...prev,
-        ...obj
-    }
-}
-
-const data = [
-    {
-          name: "Kris",
-          age: "24"
-    },
-    {
-          name: "Andy",
-          age: "25"
-    },
-    {
-          name: "Kitty",
-          age: "25"
-    },
-    {
-          name: "Andy",
-          age: "25"
-    },
-    {
-          name: "Kitty",
-          age: "25"
-    },
-    {
-          name: "Andy",
-          age: "25"
-    },
-    {
-          name: "Kitty",
-          age: "25"
-    }
-]
-
-const reducedData = data.reduce(dataReducer, {});
-let newData = Object.values(reducedData);
-
-const createList = (item, idx) => {
-    let obj = {}
-    obj[`a${idx}`] = "data"
-    return obj
-}
-const listReducer = (acc, cur) => (!acc ? { ...cur } : { ...cur, ...acc })
-const obj = Array.from(new Array(20), createList).reduce(listReducer);
-console.log(obj)
