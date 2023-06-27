@@ -71,25 +71,35 @@
 //   }
 // }
 
-function sub_curry(fn) {
-  const args = [...arguments].slice(1);
-  console.log('args', args);
-  return function() {
-    console.log('arguments', ...arguments);
-    return fn.apply(this, args.concat([...arguments]));
-  }
-}
+// function sub_curry(fn) {
+//   const args = [...arguments].slice(1);
+//   console.log('args', args);
+//   return function() {
+//     console.log('arguments', ...arguments);
+//     return fn.apply(this, args.concat([...arguments]));
+//   }
+// }
 
-function curry(fn, length) {
-  // 首次调用时，记录函数的参数个数
-  let len = length || fn.length;
-  console.log('len', len);
-  return function() {
-    console.log('arguments-curry:', ...arguments);
-    if (len > arguments.length) {
-      const combined = [fn].concat([...arguments]);
-      return curry(sub_curry.apply(this, combined), len - arguments.length)
-    } else return fn.apply(this, [...arguments])
+// function curry(fn, length) {
+//   // 首次调用时，记录函数的参数个数
+//   let len = length || fn.length;
+//   console.log('len', len);
+//   return function() {
+//     console.log('arguments-curry:', ...arguments);
+//     if (len > arguments.length) {
+//       const combined = [fn].concat([...arguments]);
+//       return curry(sub_curry.apply(this, combined), len - arguments.length)
+//     } else return fn.apply(this, [...arguments])
+//   }
+// }
+
+function curry(fn) {
+  const argsLength = fn.length;
+  const arrArgs = [];
+  return function fc() {
+    arrArgs.push(...arguments);
+    if (argsLength - arrArgs.x <=0) return fn.apply(this, arrArgs);
+    else return fc;
   }
 }
 

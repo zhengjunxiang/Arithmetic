@@ -38,3 +38,4 @@ function myNew(fn) {
     return obj;
   }
 }
+
